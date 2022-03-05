@@ -52,6 +52,11 @@ class Router
         Router::showTemplate('categoriesList', $categoriesData);
     }
 
+    public static function showForm()
+    {
+        Router::showTemplate('forms', []);
+    }
+
     private static function showTemplate($templateName, $dataTemplate)
     {
         $data = $dataTemplate;

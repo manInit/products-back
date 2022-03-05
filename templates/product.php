@@ -15,19 +15,19 @@
       foreach ($data['categories'] as $category) {
         if ($category['id'] == $guessId) {
           $parentId = $guessId;
+          break;
         }
       } 
     }
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Страница товара</title>
+  <title><?= $data['main']['label'] ?></title>
   <link rel="stylesheet" href="<?= PUBLIC_PATH ?>/css/index.css">
 </head>
 <body>
