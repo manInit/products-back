@@ -10,13 +10,19 @@
 <body>
   <div class="layout">
     <main class="products-list">
+      <button class="custom-btn">
+        <a href="<?= ROOT_FOLDER ?>">Назад</a>
+      </button>
+
       <h1 class="products-list__title"><?= $data['category']['label'] ?></h1>
       <p class="products-list__description"><?= $data['category']['teaser_text'] ?></p>
 
       <div class="products-list__container">
-        <?php foreach ($data['products'] as $product): ?>
+        <?php foreach ($data['products']['data'] as $product): ?>
           <div class="card-product">
-            <a class="card-product__link" href="<?= ROOT_FOLDER . '/?id=' . $product['id'] ?>"></a>
+            <a class="card-product__link" 
+              href="<?= ROOT_FOLDER . '/?id=' . $product['id'] . '&parent=' . $data['category']['id'] . '&page=' . $data['page'] ?>">
+            </a>
             <div class="card-product__image">
               <img src="<?= PUBLIC_PATH . $product['file_path'] ?>" alt="<?= $product['alt'] ?>">
             </div>
@@ -27,16 +33,24 @@
       </div>
 
       <div class="products-list__pagination pagination">
-        <button class="pagination__btn pagination__btn--disable">
-          <a href="">
+        <button class="pagination__btn <?=  $data['page'] == 1 ? 'pagination__btn--disable' : '' ?>">
+          <a <?= $data['page'] != 1 ? 
+            'href="' . ROOT_FOLDER . '/?cat_id=' . $data['cat_id'] . '&page=' . ($data['page'] - 1) . '"' :
+            '' ?>>
             <img src="<?= PUBLIC_PATH ?>/img/icons/cherovn-left-icon.png" alt="Стрелочка влево">
           </a>
         </button>
-        <button class="pagination__btn pagination__btn--active">
-          <a href="">1</a>
-        </button>
-        <button class="pagination__btn pagination__btn--disable">
-          <a href="">
+        <?php for ($i = 1; $i <= $data['products']['pageCount']; $i++ ): ?>
+          <button class="pagination__btn <?= $data['page'] == $i ? 'pagination__btn--active' : '' ?>">
+            <a href="<?= ROOT_FOLDER . '/?cat_id=' . $data['cat_id'] . '&page=' . $i ?>">
+              <?= $i ?>
+            </a>
+          </button>
+        <?php endfor; ?>
+        <button class="pagination__btn <?=  $data['page'] == $data['products']['pageCount'] ? 'pagination__btn--disable' : '' ?>">
+          <a <?=  $data['page'] != $data['products']['pageCount'] ? 
+            'href="' . ROOT_FOLDER . '/?cat_id=' . $data['cat_id'] . '&page=' . ($data['page'] + 1) . '"'  :
+            '' ?>>
             <img src="<?= PUBLIC_PATH ?>/img/icons/cherovn-right-icon.png" alt="Стрелочка право">
           </a>
         </button>

@@ -12,7 +12,7 @@ class Router
         $product = new Product();
         $data = $product->getProduct($idProduct);
       
-        if (!isset($data['main'][0])) {
+        if (empty($data['main'])) {
           header('location: 404.php');
         }
       
@@ -20,19 +20,24 @@ class Router
         Router::showTemplate('product', $data);
     }
 
-    public static function showProductListPage($categoryId, $page = 1)
+    public static function showProductListPage($idCategory, $page = 1)
     {
         $productPage = new ProductsPage();
         $category = new Category();
 
-        $dataPage = $productPage->getPage($categoryId, $page);
-        $dataCategory = $category->getCategory($categoryId);
+        $dataPage = $productPage->getPage($idCategory, $page);
+        $dataCategory = $category->getCategory($idCategory);
 
-        if (!isset($dataPage[0]) || !isset($dataCategory[0])) {
+        if (empty($dataPage) || empty($dataCategory)) {
             header('location: 404.php');
         }
 
-        Router::showTemplate('productsList', ['products' => $dataPage, 'category' => $dataCategory[0]]);
+        Router::showTemplate('productsList', [
+            'products' => $dataPage, 
+            'category' => $dataCategory[0], 
+            'page' => $page,
+            'cat_id' => $idCategory
+        ]);
     }
 
     public static function showCategoriesList()
@@ -40,7 +45,7 @@ class Router
         $categoriesList = new CategoriesList();
         $categoriesData = $categoriesList->getCategories();
 
-        if (!isset($categoriesData[0])) {
+        if (empty($categoriesData)) {
             header('location: 404.php');
         }
 

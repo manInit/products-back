@@ -13,9 +13,14 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_GET['cat_id'])) {
+    $page = 1;
+    if (isset($_GET['page'])) {
+        $page = intval($_GET['page']);
+    }
+
     $idCategory = intval($_GET['cat_id']);
 
-    Router::showProductListPage($idCategory);
+    Router::showProductListPage($idCategory, $page);
     die();
 }
 

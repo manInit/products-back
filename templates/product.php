@@ -1,3 +1,27 @@
+<?php 
+  $parentId = $data['main']['category_id'];
+  $page = 1;
+  
+  if (isset($_GET['page'])) {
+    $page = intval($_GET['page']);
+  }
+
+  if (isset($_GET['parent'])) {
+    $guessId = intval($_GET['parent']);
+    
+    if ($guessId == $parentId ) {
+      $parentId = $guessId;
+    } else {
+      foreach ($data['categories'] as $category) {
+        if ($category['id'] == $guessId) {
+          $parentId = $guessId;
+        }
+      } 
+    }
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,6 +32,9 @@
 </head>
 <body>
   <div class="layout">
+    <button class="custom-btn">
+      <a href="<?= ROOT_FOLDER . '/?cat_id=' . $parentId . '&page=' . $page ?>">Назад</a>
+    </button>
     <div class="product">
       <div class="product__preview">
         <div class="product__gallery">
