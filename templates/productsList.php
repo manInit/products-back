@@ -9,11 +9,11 @@
 </head>
 <body>
   <div class="layout">
-    <main>
-      <h1><?= $data['category']['label'] ?></h1>
-      <p><?= $data['category']['teaser_text'] ?></p>
+    <main class="products-list">
+      <h1 class="products-list__title"><?= $data['category']['label'] ?></h1>
+      <p class="products-list__description"><?= $data['category']['teaser_text'] ?></p>
 
-      <div class="products-list">
+      <div class="products-list__container">
         <?php foreach ($data['products'] as $product): ?>
           <div class="card-product">
             <a class="card-product__link" href="<?= ROOT_FOLDER . '/?id=' . $product['id'] ?>"></a>
@@ -25,6 +25,23 @@
           </div>
         <?php endforeach; ?>
       </div>
+
+      <div class="products-list__pagination pagination">
+        <button class="pagination__btn pagination__btn--disable">
+          <a href="">
+            <img src="<?= PUBLIC_PATH ?>/img/icons/cherovn-left-icon.png" alt="Стрелочка влево">
+          </a>
+        </button>
+        <button class="pagination__btn pagination__btn--active">
+          <a href="">1</a>
+        </button>
+        <button class="pagination__btn pagination__btn--disable">
+          <a href="">
+            <img src="<?= PUBLIC_PATH ?>/img/icons/cherovn-right-icon.png" alt="Стрелочка право">
+          </a>
+        </button>
+      </div>
+
     </main>
   </div>
 </body>

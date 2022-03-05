@@ -429,7 +429,12 @@ h2 {
 
 /* product cards list */
 
-.products-list {
+.products-list .products-list__description {
+  font-size: 20px;
+  text-align: center;
+}
+
+.products-list .products-list__container {
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
@@ -485,4 +490,56 @@ h2 {
 
 .card-product .card-product__title {
   font-weight: normal;
+}
+
+/* pagination */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.pagination .pagination__btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #999;
+  font-size: 20px;
+  background: white;
+  transition: background-color 0.2s;
+}
+
+.pagination .pagination__btn:hover {
+  background-color: #ccc;
+}
+
+.pagination .pagination__btn a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 30px;
+  color: #666;
+}
+
+.pagination .pagination__btn img {
+  width: 100%;
+  height: 100%;
+}
+
+.pagination .pagination__btn--active,
+.pagination .pagination__btn--active:hover {
+  background: #006be5;
+  border-color: #006be5;
+}
+
+.pagination .pagination__btn--active a {
+  color: #fff;
+}
+
+.pagination .pagination__btn--disable,
+.pagination .pagination__btn--disable:hover {
+  background: #ccc;
+  opacity: 0.6;
 }
