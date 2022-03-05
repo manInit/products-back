@@ -28,9 +28,11 @@
       <div class="product__description">
         <h2><?= $data['main']['label'] ?></h2>
         <div class="product__categories">
-          <a href=""><?= $data['main']['category'] ?></a>
+          <a href="<?= ROOT_FOLDER . '?cat_id=' . $data['main']['category_id'] ?>"><?= $data['main']['category'] ?></a>
           <?php foreach ($data['categories'] as $category): ?>
-            <a href=""><?= $category['label'] ?></a>
+            <a href="<?= ROOT_FOLDER . '?cat_id=' . $category['id'] ?>">
+              <?= $category['label'] ?>
+            </a>
           <?php endforeach; ?>
         </div>
         <div class="product__price">
@@ -61,7 +63,6 @@
             </div>
             <button id="buy-btn" class="custom-btn custom-btn--blue">Купить</button>
           </div>
-          
           <button class="custom-btn">В избранное</button>
         </div>
         <div class="product__text">

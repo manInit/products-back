@@ -50,7 +50,7 @@ class Product
     private function getExtraCategories($id)
     {
         return $this->db->queryRows('
-            SELECT c.label, c.teaser_text FROM categories c 
+            SELECT c.id, c.label, c.teaser_text FROM categories c 
             INNER JOIN field_categories fc ON fc.cid = c.id 
             WHERE fc.pid = :id', 
             ['id' => $id]
