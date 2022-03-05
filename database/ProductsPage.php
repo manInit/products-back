@@ -18,7 +18,7 @@ class ProductsPage
         $offset = ($page - 1) * $this->pageCount;
 
         return $this->db->queryRows("
-            SELECT p.id, p.label, i.alt, i.file_path, c.id AS category_id, c.label FROM products p
+            SELECT p.id, p.label, i.alt, i.file_path, c.id AS category_id, c.label AS category FROM products p
             INNER JOIN field_main_images fmi ON fmi.pid = p.id
             INNER JOIN images i ON i.id = fmi.image_id
             INNER JOIN field_main_categories fmc ON fmc.pid = p.id

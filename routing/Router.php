@@ -32,7 +32,7 @@ class Router
             header('location: 404.php');
         }
 
-        Router::showTemplate('productsList', ['products' => $dataPage, 'category' => $dataCategory]);
+        Router::showTemplate('productsList', ['products' => $dataPage, 'category' => $dataCategory[0]]);
     }
 
     public static function showCategoriesList()

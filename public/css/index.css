@@ -52,7 +52,16 @@ img {
 .layout {
   max-width: 1156px;
   margin: 0 auto;
-  padding: 22px 0 70px 0;
+  padding: 22px 0 10px 0;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 900;
+  color: #131313;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 h2 {
@@ -365,4 +374,111 @@ h2 {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent; 
   border-right: 5px solid #efefef; 
+}
+
+/* category list */
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* category cards */
+
+.card-category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  width: 30%;
+  min-height: 200px;
+  padding: 10px 10px 25px 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border: 3px solid #4a8ea8;
+  border-radius: 10px;
+  background: #dce8ee;
+  transition: transform 0.2s;
+}
+
+.card-category:hover {
+  transform: translate(0, -5px);
+}
+
+.card-category + .card-category {
+  margin-left: 30px;
+}
+
+.card-category:nth-child(3n + 4) {
+  margin-left: 0;
+}
+
+.card-category .card-category__count {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.card-category .card-category__link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* product cards list */
+
+.products-list {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* product card */
+
+.card-product {
+  width: 20%;
+  position: relative;
+  margin-top: 20px;
+  margin-right: 20px;
+  background: #ccc;
+  box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card-product + .card-product {
+  margin-left: 20px;
+}
+
+.card-product:nth-child(4n + 5) {
+  margin-left: 0;
+}
+
+.card-product:hover {
+  transform: translate(0, -10px);
+}
+
+.card-product .card-product__link {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card-product .card-product__image {
+  width: 100%;
+  height: 200px;
+}
+
+.card-product .card-product__image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card-product .card-product__title {
+  font-weight: normal;
 }
