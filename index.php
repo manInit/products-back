@@ -3,7 +3,6 @@
 require_once './routing/Router.php';
 require_once './constants.php';
 
-
 if (isset($_GET['id'])) {
     $idProduct = intval($_GET['id']);
 
@@ -24,4 +23,3 @@ if (isset($_GET['cat_id'])) {
 }
 
 Router::showCategoriesList();
-die();

@@ -13,23 +13,23 @@
       <h1 class="form__title">Форма</h1>
       <div class="form__group input-group">
         <label for="username">Имя</label>
-        <input name="username" id="username" type="text">
+        <input class="input-group__text-input" name="username" id="username" type="text">
       </div>
       <div class="form__group input-group">
         <label for="email">E-mail</label>
-        <input name="email" id="email" type="text">
+        <input class="input-group__text-input" name="email" id="email" type="text">
       </div>
       <div class="form__group input-group">
         <label for="birthYear">Год рождения</label>
-        <select name="birthYear" id="birthYear">
+        <select class="input-group__select" name="birthYear" id="birthYear">
           <?php for ($year = 2010; $year > 1900; $year--): ?>
             <option value="<?= $year ?>"><?= $year ?></option>
           <?php endfor; ?>
         </select>
       </div>
-      <div class="form__group input-group">
-        <label>Пол</label>
-        <div class="input-group input-group__radios">
+      <div class="form__group input-group input-group--row">
+        <label for="genderMale">Пол</label>
+        <div class="input-group__radios">
           <div class="input-group__radio">
             <label for="genderMale">Мужской</label>
             <input name="gender" id="genderMale" type="radio" value="Мужской">
@@ -42,7 +42,7 @@
       </div>
       <div class="form__group input-group">
         <label for="subject">Тема обращения</label>
-        <input name="subject" id="subject" type="text">
+        <input class="input-group__text-input" name="subject" id="subject" type="text">
       </div>
       <div class="form__group input-group">
         <label for="text">Суть вопроса</label>
@@ -50,7 +50,7 @@
       </div>
       <div class="form__group input-group">
         <label for="agree">С контрактом ознакомлен</label>
-        <input name="agree" id="agree" type="checkbox" value="agree" >
+        <input class="input-group__check" name="agree" id="agree" type="checkbox" value="agree" >
       </div>
       <input class="form__send" type="submit" value="Отправить">
     </form>
