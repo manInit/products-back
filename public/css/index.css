@@ -438,11 +438,15 @@ h2 {
 /* product card */
 
 .card-product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 20%;
   position: relative;
   margin-top: 20px;
   margin-right: 20px;
-  background: #ccc;
+  padding: 10px;
+  border: 1px solid black;
   box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s;
 }
