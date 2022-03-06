@@ -52,9 +52,9 @@ class Router
         Router::showTemplate('categoriesList', $categoriesData);
     }
 
-    public static function showForm()
+    public static function showForm($data = [])
     {
-        Router::showTemplate('forms', []);
+        Router::showTemplate('forms', $data);
     }
 
     private static function showTemplate($templateName, $dataTemplate)

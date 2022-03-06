@@ -1,3 +1,32 @@
+<?php
+
+  $form = [
+    'username' => '',
+    'email' => '',
+    'subject' => '',
+    'text' => '',
+    'agree' => ''
+  ];
+
+  $err = [
+    'username' => '',
+    'email' => '',
+    'subject' => '',
+    'text' => '',
+    'agree' => ''
+  ];
+
+  if (isset($data['form'])) {
+    $form = $data['form'];
+
+    $err['username'] = $data['err']['username'] ?? '';
+    $err['email'] = $data['err']['email'] ?? '';
+    $err['subject'] = $data['err']['subject'] ?? '';
+    $err['text'] = $data['err']['text'] ?? '';
+    $err['agree'] = $data['err']['agree'] ?? '';
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,15 +38,39 @@
 </head>
 <body>
   <div class="layout">
-    <form class="form">
+    <form class="form" method="POST" action="">
       <h1 class="form__title">Форма</h1>
       <div class="form__group input-group">
         <label for="username">Имя</label>
-        <input class="input-group__text-input" name="username" id="username" type="text">
+        <input 
+          class="
+            input-group__text-input
+            <?= $err['username'] ? 'input-group__text-input--danger' : '' ?>  
+          " 
+          name="username" 
+          id="username" 
+          type="text"
+          value="<?= $form['username'] ?? '' ?>"
+        >
+        <?php if ($err['username']): ?>
+          <span class="input-group__err"><?= $err['username'] ?></span>
+        <?php endif; ?>
       </div>
       <div class="form__group input-group">
         <label for="email">E-mail</label>
-        <input class="input-group__text-input" name="email" id="email" type="text">
+        <input 
+          class="
+            input-group__text-input
+            <?= $err['email'] ? 'input-group__text-input--danger' : '' ?>  
+          " 
+          name="email" 
+          id="email" 
+          type="text"
+          value="<?= $form['email'] ?? '' ?>"  
+        >
+        <?php if ($err['email']): ?>
+          <span class="input-group__err"><?= $err['email'] ?></span>
+        <?php endif; ?>
       </div>
       <div class="form__group input-group">
         <label for="birthYear">Год рождения</label>
@@ -32,7 +85,7 @@
         <div class="input-group__radios">
           <div class="input-group__radio">
             <label for="genderMale">Мужской</label>
-            <input name="gender" id="genderMale" type="radio" value="Мужской">
+            <input name="gender" id="genderMale" type="radio" value="Мужской" checked>
           </div>
           <div class="input-group__radio">
             <label for="genderFemale">Женский</label>
@@ -42,15 +95,42 @@
       </div>
       <div class="form__group input-group">
         <label for="subject">Тема обращения</label>
-        <input class="input-group__text-input" name="subject" id="subject" type="text">
+        <input 
+          class="
+            input-group__text-input
+            <?= $err['subject'] ? 'input-group__text-input--danger' : '' ?>  
+          " 
+          name="subject" 
+          id="subject" 
+          type="text"
+          value="<?= $form['subject'] ?? '' ?>"
+         >
+        <?php if ($err['subject']): ?>
+          <span class="input-group__err"><?= $err['subject'] ?></span>
+        <?php endif; ?>
       </div>
       <div class="form__group input-group">
         <label for="text">Суть вопроса</label>
-        <textarea name="text" id="text"></textarea>
+        <textarea 
+          name="text" 
+          id="text"
+          class="
+            input-group__text-input
+            input-group__text-input--area
+            <?= $err['text'] ? 'input-group__text-input--danger' : '' ?>  
+          "
+          value="<?= $form['text'] ?? '' ?>"
+        ></textarea>
+        <?php if ($err['text']): ?>
+          <span class="input-group__err"><?= $err['text'] ?></span>
+        <?php endif; ?>
       </div>
       <div class="form__group input-group">
-        <label for="agree">С контрактом ознакомлен</label>
-        <input class="input-group__check" name="agree" id="agree" type="checkbox" value="agree" >
+        <label for="agree" class="input-group__check <?= $err['agree'] ? 'input-group__check--err' : '' ?>">
+          
+          <input name="agree" id="agree" type="checkbox" value="true">
+          <span>С контрактом ознакомлен</span>
+        </label>
       </div>
       <input class="form__send" type="submit" value="Отправить">
     </form>
