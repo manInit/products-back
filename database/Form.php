@@ -13,6 +13,11 @@ class Form
 
     public function saveFormData($data)
     {
+        $data['username'] = htmlspecialchars(trim($data['username']));
+        $data['email'] = htmlspecialchars(trim($data['email']));
+        $data['subject'] = htmlspecialchars(trim($data['subject']));
+        $data['text'] = htmlspecialchars(trim($data['text']));
+
         $errors = $this->validateData($data);
         if (count($errors) != 0) {
             return $errors;
@@ -29,13 +34,13 @@ class Form
     {
         $errors = [];
         //проверка имени
-        preg_match('/^[a-zA-Zа-яА-Я]{2,}$/', $data['username'], $matchesName);
+        preg_match('/^[a-zA-Zа-яА-Я]{2,}$/u', $data['username'], $matchesName);
         if (count($matchesName) == 0) {
             $errors['username'] = 'Имя должно состоять только из букв и быть не менее 2-х символов';
         }
         //проверка почты
         preg_match('/^\S+@[a-z]+\.[a-z]{2,}$/', $data['email'], $matchesEmail);
-        if (count($matchesName) == 0) {
+        if (count($matchesEmail) == 0) {
             $errors['email'] = 'Неверно введен e-mail';
         }
         //проверка темы

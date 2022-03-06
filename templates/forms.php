@@ -1,11 +1,13 @@
 <?php
 
   $form = [
-    'username' => '',
-    'email' => '',
+    'username' => $_COOKIE['username'] ?? '',
+    'email' => $_COOKIE['email'] ?? '',
     'subject' => '',
     'text' => '',
-    'agree' => ''
+    'agree' => '',
+    'gender' => $_COOKIE['gender'] ?? 'Мужской',
+    'birthYear' => $_COOKIE['birthYear'] ?? 2000
   ];
 
   $err = [
@@ -76,7 +78,7 @@
         <label for="birthYear">Год рождения</label>
         <select class="input-group__select" name="birthYear" id="birthYear">
           <?php for ($year = 2010; $year > 1900; $year--): ?>
-            <option value="<?= $year ?>"><?= $year ?></option>
+            <option value="<?= $year ?>" <?= $year == $form['birthYear'] ? 'selected' : '' ?>><?= $year ?></option>
           <?php endfor; ?>
         </select>
       </div>
@@ -85,21 +87,29 @@
         <div class="input-group__radios">
           <div class="input-group__radio">
             <label for="genderMale">Мужской</label>
-            <input name="gender" id="genderMale" type="radio" value="Мужской" checked>
+            <input 
+              name="gender" 
+              id="genderMale" 
+              type="radio" 
+              value="Мужской" 
+              <?= $form['gender'] == 'Мужской' ? 'checked' : '' ?>>
           </div>
           <div class="input-group__radio">
             <label for="genderFemale">Женский</label>
-            <input name="gender" id="genderFemale" type="radio" value="Женский">
+            <input 
+            name="gender" 
+            id="genderFemale" 
+            type="radio" 
+            value="Женский"
+            <?= $form['gender'] == 'Женский' ? 'checked' : '' ?>>
           </div>
         </div>
       </div>
       <div class="form__group input-group">
         <label for="subject">Тема обращения</label>
         <input 
-          class="
-            input-group__text-input
-            <?= $err['subject'] ? 'input-group__text-input--danger' : '' ?>  
-          " 
+          class="input-group__text-input
+            <?= $err['subject'] ? 'input-group__text-input--danger' : '' ?>" 
           name="subject" 
           id="subject" 
           type="text"
@@ -117,10 +127,7 @@
           class="
             input-group__text-input
             input-group__text-input--area
-            <?= $err['text'] ? 'input-group__text-input--danger' : '' ?>  
-          "
-          value="<?= $form['text'] ?? '' ?>"
-        ></textarea>
+            <?= $err['text'] ? 'input-group__text-input--danger' : '' ?>"><?= $form['text'] ?? ''?></textarea>
         <?php if ($err['text']): ?>
           <span class="input-group__err"><?= $err['text'] ?></span>
         <?php endif; ?>
@@ -128,7 +135,8 @@
       <div class="form__group input-group">
         <label for="agree" class="input-group__check <?= $err['agree'] ? 'input-group__check--err' : '' ?>">
           
-          <input name="agree" id="agree" type="checkbox" value="true">
+          <input name="agree" id="agree" type="checkbox" value="true"
+            <?= $form['agree'] ? 'checked' : '' ?>>
           <span>С контрактом ознакомлен</span>
         </label>
       </div>

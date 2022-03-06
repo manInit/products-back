@@ -57,7 +57,7 @@ class Router
         Router::showTemplate('forms', $data);
     }
 
-    private static function showTemplate($templateName, $dataTemplate)
+    public static function showTemplate($templateName, $dataTemplate)
     {
         $data = $dataTemplate;
         require_once('./templates/' . $templateName . '.php');

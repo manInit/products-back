@@ -147,6 +147,12 @@ h2 {
   transition: background-color 0.2s, border 0.2s;
 }
 
+.custom-btn--center {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
 .custom-btn a {
   display: block;
   width: 100%;
