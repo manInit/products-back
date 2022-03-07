@@ -17,7 +17,7 @@ if (isset($_POST['username'])) {
         Router::showForm($data);
         die();
     } else {
-        $cookieTime = time()+3600;
+        $cookieTime = time() + 3600;
 
         setcookie('username', $_POST['username'], $cookieTime);
         setcookie('email', $_POST['email'], $cookieTime);
