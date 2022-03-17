@@ -52,7 +52,7 @@
           name="username" 
           id="username" 
           type="text"
-          value="<?= $form['username'] ?? '' ?>"
+          value="<?= htmlspecialchars($form['username']) ?? '' ?>"
         >
         <?php if ($err['username']): ?>
           <span class="input-group__err"><?= $err['username'] ?></span>
@@ -68,7 +68,7 @@
           name="email" 
           id="email" 
           type="text"
-          value="<?= $form['email'] ?? '' ?>"  
+          value="<?= htmlspecialchars($form['email']) ?? '' ?>"  
         >
         <?php if ($err['email']): ?>
           <span class="input-group__err"><?= $err['email'] ?></span>
@@ -78,7 +78,7 @@
         <label for="birthYear">Год рождения</label>
         <select class="input-group__select" name="birthYear" id="birthYear">
           <?php for ($year = 2010; $year > 1900; $year--): ?>
-            <option value="<?= $year ?>" <?= $year == $form['birthYear'] ? 'selected' : '' ?>><?= $year ?></option>
+            <option value="<?= $year ?>" <?= $year == $form['birthYear'] ? 'selected' : '' ?>><?=  $year ?></option>
           <?php endfor; ?>
         </select>
       </div>
@@ -113,7 +113,7 @@
           name="subject" 
           id="subject" 
           type="text"
-          value="<?= $form['subject'] ?? '' ?>"
+          value="<?= htmlspecialchars($form['subject']) ?? '' ?>"
          >
         <?php if ($err['subject']): ?>
           <span class="input-group__err"><?= $err['subject'] ?></span>
@@ -127,7 +127,7 @@
           class="
             input-group__text-input
             input-group__text-input--area
-            <?= $err['text'] ? 'input-group__text-input--danger' : '' ?>"><?= $form['text'] ?? ''?></textarea>
+            <?= $err['text'] ? 'input-group__text-input--danger' : '' ?>"><?=  htmlspecialchars($form['text']) ?? ''?></textarea>
         <?php if ($err['text']): ?>
           <span class="input-group__err"><?= $err['text'] ?></span>
         <?php endif; ?>
