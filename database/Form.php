@@ -11,7 +11,7 @@ class Form
         $this->db = new DB();
     }
 
-    public function saveFormData($data)
+    public function saveFormData(&$data)
     {
         $data['username'] = htmlspecialchars(trim($data['username']));
         $data['email'] = htmlspecialchars(trim($data['email']));
